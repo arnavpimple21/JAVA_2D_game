@@ -1,0 +1,40 @@
+package main;
+
+import java.awt.Graphics2D;
+
+public class TileManager {
+    GamePannel gp;
+    public int[][] mapTileNum;
+    public Tile[] tile; // Array to store tile objects
+
+    public TileManager(GamePannel gp) {
+        this.gp = gp;
+        this.mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+        this.tile = new Tile[10]; // Example size, adjust as needed
+        loadMap();
+        loadTileImages();
+    }
+
+    public void loadTileImages() {
+        // Sample tile initialization (replace with actual image loading)
+        tile[0] = new Tile();
+        tile[0].collision = false;
+
+        tile[1] = new Tile();
+        tile[1].collision = true;
+    }
+
+    public void draw(Graphics2D g2) {
+        for (int col = 0; col < gp.maxWorldCol; col++) {
+            for (int row = 0; row < gp.maxWorldRow; row++) {
+                int tileNum = mapTileNum[col][row];
+                // Example drawing logic
+                g2.drawRect(col * gp.tileSize, row * gp.tileSize, gp.tileSize, gp.tileSize);
+            }
+        }
+    }
+
+    private void loadMap() {
+        // Logic to load the map data
+    }
+}
